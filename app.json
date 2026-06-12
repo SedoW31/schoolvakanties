@@ -3,7 +3,7 @@
     "name": "schoolvakanties",
     "slug": "schoolvakanties",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
@@ -24,6 +24,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Deze app gebruikt je locatie om je schoolvakantie-regio te bepalen."
+        }
+      ]
+    ]
   }
 }
