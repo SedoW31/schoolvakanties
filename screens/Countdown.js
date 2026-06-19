@@ -11,7 +11,7 @@ const getAfbeelding = (type) => {
   return require('../assets/zomer.png');
 };
 
-export default function Countdown({ region, year }) {
+export default function Countdown({ region, year, isLandscape }) {
   const [next, setNext] = useState(null);
 
   useEffect(() => {
@@ -32,12 +32,19 @@ export default function Countdown({ region, year }) {
   const days = next ? Math.ceil((new Date(next.date) - new Date()) / 86400000) : null;
 
   return (
-    <View style={{ flex: 1, padding: 20, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 28, fontWeight: 'bold' }}>Countdown</Text>
+    <View style={{
+      flex: 1,
+      padding: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: isLandscape ? 'row' : 'column',
+      gap: isLandscape ? 40 : 10
+    }}>
+      {!isLandscape && <Text style={{ fontSize: 28, fontWeight: 'bold', marginBottom: 10 }}>Countdown</Text>}
       {next ? (
         <>
-          <Image source={getAfbeelding(next.type)} style={{ width: 300, height: 300, marginBottom: 20 }} resizeMode="contain" />
-          <Text>{days} dagen tot {next.type}</Text>
+          <Image source={getAfbeelding(next.type)} style={{ width: isLandscape ? 180 : 300, height: isLandscape ? 180 : 300 }} resizeMode="contain" />
+          <Text style={{ fontSize: isLandscape ? 22 : 24, fontWeight: 'bold', textAlign: 'center' }}>{days} dagen tot {'\n'}{next.type}</Text>
         </>
       ) : (
         <Text>Geen vakantie gevonden</Text>

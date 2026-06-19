@@ -36,7 +36,7 @@ function renderScreen(screen, props, isLandscape) {
     return <Settings {...props} />;
   }
 
-  return <About />;
+  return <About {...props} />;
 }
 
 export default function App() {

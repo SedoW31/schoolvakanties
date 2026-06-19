@@ -1,5 +1,4 @@
 import * as Location from 'expo-location';
-import { Pressable, Text, View } from 'react-native';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 const years = ['2024-2025', '2025-2026', '2026-2027', '2027-2028', '2028-2029', '2029-2030'];
@@ -18,7 +17,6 @@ export default function Settings({ region, setRegion, year, setYear, gps, setGps
   }
 
   return (
-    <View style={{ padding: 20, gap: 10 }}>
     <ScrollView contentContainerStyle={{ padding: 20, gap: 10 }}>
       <Text style={{ fontSize: 28, fontWeight: 'bold' }}>Settings</Text>
       <Text>Regio</Text>
@@ -32,7 +30,6 @@ export default function Settings({ region, setRegion, year, setYear, gps, setGps
       <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
         {years.map((x) => <Button key={x} text={x} active={year === x} onPress={() => setYear(x)} />)}
       </View>
-    </View>
     </ScrollView>
   );
 }
